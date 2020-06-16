@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :articles do
@@ -7,5 +6,6 @@ Rails.application.routes.draw do
   end
 
   root 'pages#home'
+  get 'home', to: 'pages#home'
   get 'about', to: 'pages#about'
 end
