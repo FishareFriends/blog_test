@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
-	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+	# http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
 	def index
 		# perform a paginated query, using an explicit "per page" limit:
@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
-		@article.user = User.first
+		@article.user = current_user
 
 		if @article.save
 			flash[:notice] = "Article was created successfully."
